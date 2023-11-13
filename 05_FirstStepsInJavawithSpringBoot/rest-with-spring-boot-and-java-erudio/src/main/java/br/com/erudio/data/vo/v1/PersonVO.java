@@ -2,21 +2,29 @@ package br.com.erudio.data.vo.v1;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+@JsonPropertyOrder({"id", "first_Name", "last_Name", "address", "gender"}) // mudar nome dos campos, alterar ordem
 public class PersonVO implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
 	private Long id;
+	
+//	@JsonProperty("first_Name")
 	private String firstName;
+	//@JsonProperty("last_Name") // omitir campo
 	private String lastName;
 	private String address;
+	//@JsonIgnore
 	private String gender;
+	
 	
 	public PersonVO() {}
 
 	public Long getId() {
-		return id;
+		return id; 
 	}
 
 	public void setId(Long id) {
@@ -59,11 +67,11 @@ public class PersonVO implements Serializable{
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((address == null) ? 0 : address.hashCode());
-		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
-		result = prime * result + ((gender == null) ? 0 : gender.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
+		result = prime * result + ((address == null) ? 0 : address.hashCode());
+		result = prime * result + ((gender == null) ? 0 : gender.hashCode());
 		return result;
 	}
 
